@@ -20,44 +20,25 @@ frontend (React + Vite)  <-- HTTP/JSON -->  backend (FastAPI / Python)
 - **frontend/**: SPA en React. Consume la API vía `fetch`.
 - **backend/**: API REST en FastAPI con endpoint `/imagen/procesar`.
 
-## Demo en vivo
+## Demo en vivo (instrumento de ejecución — recomendado)
 
-- Frontend: `[COMPLETAR CON LA URL DE VERCEL]`
+La app ya está desplegada y corriendo; no hace falta instalar nada para probarla:
+
+- Frontend: https://tp-comu-datos.vercel.app/
 - Backend (Swagger): https://comudatos-backend.onrender.com/docs
 
-## Deploy (instrumento de ejecución sin instalación)
+> Nota: el backend está en el plan free de Render; si lleva varios minutos sin uso, la primera petición puede demorar ~30-50s mientras el servicio se reactiva.
 
-Para que la cátedra pueda probar la app abriendo un link, sin instalar nada localmente:
+## Ejecución local (opcional, solo para desarrollo)
 
-### Backend en Render
+Pensado para modificar el código y probarlo antes de subirlo; no es necesario para usar la app.
 
-1. Crear cuenta en [render.com](https://render.com) y conectarla al repositorio de GitHub.
-2. "New +" → "Blueprint" → seleccionar este repo. Render detecta `render.yaml` (en la raíz) y configura automáticamente:
-   - Root directory: `backend`
-   - Build command: `pip install -r requirements.txt`
-   - Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-3. Al finalizar el deploy, copiar la URL pública (ej. `https://comudatos-backend.onrender.com`).
-
-> Nota: en el plan free, el servicio "duerme" tras 15 min sin uso y la primera request demora ~30-50s en responder mientras arranca.
-
-### Frontend en Vercel
-
-1. Crear cuenta en [vercel.com](https://vercel.com) y conectarla al mismo repositorio.
-2. "Add New" → "Project" → seleccionar este repo. Vercel detecta Vite automáticamente:
-   - Root directory: `frontend`
-   - Build command: `npm run build`
-   - Output directory: `dist`
-3. En "Environment Variables" agregar `VITE_API_URL` con la URL del backend de Render (sin barra final), ej. `https://comudatos-backend.onrender.com`.
-4. Deploy. Vercel entrega una URL pública (ej. `https://comudatos.vercel.app`).
-
-Con ambas URLs, completar la sección "Demo en vivo" de este README y el documento de entrega (`docs/generar_entrega2.py`).
-
-## Requisitos previos
+### Requisitos previos
 
 - [Node.js](https://nodejs.org/) 18+ y npm (para el frontend)
 - [Python](https://www.python.org/) 3.10+ (para el backend)
 
-## Cómo ejecutar el backend
+### Backend
 
 ```bash
 cd backend
@@ -74,7 +55,7 @@ uvicorn app.main:app --reload --port 8000
 
 La API queda disponible en `http://localhost:8000`. La documentación interactiva (Swagger) está en `http://localhost:8000/docs`.
 
-## Cómo ejecutar el frontend
+### Frontend
 
 ```bash
 cd frontend
@@ -83,6 +64,13 @@ npm run dev
 ```
 
 La aplicación queda disponible en `http://localhost:5173`. Por defecto se conecta a `http://localhost:8000`; si el backend corre en otra URL, copiar `.env.example` a `.env` y ajustar `VITE_API_URL`.
+
+## Cómo se desplegó (referencia)
+
+Pasos seguidos para publicar esta instancia en vivo, por si hace falta redeployar o crear una nueva:
+
+1. **Backend en Render**: cuenta en [render.com](https://render.com) → conectar el repo de GitHub → "New +" → "Blueprint". Render detecta `render.yaml` (en la raíz) y configura automáticamente root directory `backend`, build command `pip install -r requirements.txt` y start command `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
+2. **Frontend en Vercel**: cuenta en [vercel.com](https://vercel.com) → conectar el mismo repo → root directory `frontend` (Vercel detecta Vite solo). En "Environment Variables" agregar `VITE_API_URL` con la URL del backend de Render (sin barra final).
 
 ## Endpoints principales
 

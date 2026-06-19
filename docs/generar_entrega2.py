@@ -229,7 +229,7 @@ def main():
     flujo.append(Spacer(1, 6))
     flujo.append(
         Paragraph(
-            "Repositorio público de GitHub: <b>[COMPLETAR CON EL LINK AL REPOSITORIO]</b>",
+            "Repositorio público de GitHub: <b>https://github.com/Ignapag/TP-ComuDatos</b>",
             estilos["cuerpo"],
         )
     )
@@ -245,7 +245,7 @@ def main():
     flujo.append(
         caja(
             Paragraph(
-                "Frontend: <b>[COMPLETAR CON LA URL DE VERCEL]</b><br/>"
+                "Frontend: <b>https://tp-comu-datos.vercel.app/</b><br/>"
                 "Backend (Swagger): <b>https://comudatos-backend.onrender.com/docs</b>",
                 estilos["codigo"],
             )
@@ -314,7 +314,7 @@ def main():
     flujo.append(
         Paragraph(
             "Enlace al video (máximo 6 minutos) que muestra el uso de las funcionalidades desarrolladas: "
-            "<b>[COMPLETAR CON EL LINK AL VIDEO]</b>",
+            "<b>https://drive.google.com/file/d/1WUkuplsRMkm7-yGdzMCsao_X3A20B4Wt/view?usp=drive_link</b>",
             estilos["cuerpo"],
         )
     )

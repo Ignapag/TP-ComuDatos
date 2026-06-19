@@ -189,10 +189,9 @@ def main():
         Paragraph(
             "A partir de la arquitectura y los mockups definidos en la Etapa 1, se desarrolló la aplicación "
             "completa: un front-end en React que consume una API REST construida con FastAPI. El back-end "
-            "implementa el muestreo y la cuantización de imágenes (Pillow) y los algoritmos de codificación "
-            "Huffman y Shannon-Fano (biblioteca estándar de Python). Esta entrega incluye el código fuente "
-            "completo, el instrumento de ejecución para que la cátedra pueda probar el desarrollo, y el "
-            "enlace al video demostrativo.",
+            "implementa el muestreo y la cuantización de imágenes (Pillow). Esta entrega incluye el código "
+            "fuente completo, el instrumento de ejecución para que la cátedra pueda probar el desarrollo, y "
+            "el enlace al video demostrativo.",
             estilos["cuerpo"],
         )
     )
@@ -208,16 +207,6 @@ def main():
     ]:
         flujo.append(item(texto))
 
-    flujo.append(Paragraph("Propuesta 5 — Codificación de datos", estilos["subseccion"]))
-    for texto in [
-        "Carga de texto por entrada directa o archivo .txt.",
-        "Cálculo de frecuencias y construcción del árbol y la tabla de códigos, tanto para Huffman como para Shannon-Fano.",
-        "Codificación del mensaje a cadena binaria y decodificación inversa a partir de la tabla de códigos.",
-        "Comparación de resultados entre ambos métodos: tasa de compresión, longitud promedio de código y entropía de la fuente.",
-        "Gráfico de barras de frecuencias por símbolo, junto con la visualización del árbol binario de códigos (SVG, sin librerías externas).",
-    ]:
-        flujo.append(item(texto))
-
     flujo.append(encabezado_seccion("03", "Código fuente"))
     flujo.append(
         Paragraph(
@@ -228,12 +217,11 @@ def main():
         )
     )
     estructura = (
-        "backend/app/main.py · routers/imagen.py · routers/codificar.py\n"
-        "backend/app/services/imagen_service.py · huffman.py · shannon_fano.py · arbol.py\n"
+        "backend/app/main.py · routers/imagen.py\n"
+        "backend/app/services/imagen_service.py\n"
         "backend/app/models/schemas.py\n"
         "frontend/src/App.jsx + App.css\n"
         "frontend/src/components/ImagenDigitalizador/*.jsx + *.css\n"
-        "frontend/src/components/Codificador/*.jsx + *.css\n"
         "frontend/src/api/client.js\n"
         "frontend/src/styles/index.css + shared.css"
     )
@@ -288,43 +276,9 @@ def main():
     flujo.append(encabezado_seccion("05", "Evidencia de funcionamiento"))
     flujo.append(
         Paragraph(
-            "Pruebas realizadas sobre la API durante el desarrollo, con el texto "
-            '"comunicacion de datos utn la plata" (35 caracteres, 272 bits sin comprimir):',
-            estilos["cuerpo"],
-        )
-    )
-    tabla_metricas = Table(
-        [
-            ["Método", "Bits codificados", "Tasa de compresión", "Long. promedio", "Entropía"],
-            ["Huffman", "124", "54.41 %", "3.647 bits", "3.61 bits"],
-            ["Shannon-Fano", "129", "54.04 %", "3.676 bits", "3.61 bits"],
-        ],
-        colWidths=[90, 90, 100, 90, 80],
-    )
-    tabla_metricas.setStyle(
-        TableStyle(
-            [
-                ("BACKGROUND", (0, 0), (-1, 0), AZUL),
-                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-                ("FONTNAME", (0, 1), (-1, -1), "Helvetica"),
-                ("FONTSIZE", (0, 0), (-1, -1), 8.5),
-                ("GRID", (0, 0), (-1, -1), 0.5, GRIS_BORDE),
-                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, GRIS_FONDO]),
-                ("ALIGN", (1, 0), (-1, -1), "CENTER"),
-                ("TOPPADDING", (0, 0), (-1, -1), 6),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-            ]
-        )
-    )
-    flujo.append(tabla_metricas)
-    flujo.append(Spacer(1, 8))
-    flujo.append(
-        Paragraph(
-            "Se verificó además el ciclo completo de codificación + decodificación (round-trip), "
-            "obteniendo exactamente el texto original a partir de la cadena binaria y la tabla de códigos. "
-            "Para la digitalización de imágenes se probó una imagen de 800×600 px (2.7 KB): muestreada a "
-            "100×100 con 8 bits por canal y compresión activada, el resultado ocupó 1.3 KB.",
+            "Pruebas realizadas sobre la API durante el desarrollo: para la digitalización de imágenes se "
+            "probó una imagen de 800×600 px (2.7 KB); muestreada a 100×100 con 8 bits por canal y compresión "
+            "activada, el resultado ocupó 1.3 KB.",
             estilos["cuerpo"],
         )
     )

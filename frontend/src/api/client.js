@@ -21,21 +21,3 @@ export async function procesarImagen({ archivo, resolucion, bitsPorCanal, compri
   })
   return manejarRespuesta(respuesta)
 }
-
-export async function codificarTexto(metodo, texto) {
-  const respuesta = await fetch(`${BASE_URL}/codificar/${metodo}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ texto }),
-  })
-  return manejarRespuesta(respuesta)
-}
-
-export async function decodificarTexto(codigoBinario, codigos) {
-  const respuesta = await fetch(`${BASE_URL}/codificar/decodificar`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ codigo_binario: codigoBinario, codigos }),
-  })
-  return manejarRespuesta(respuesta)
-}

@@ -1,9 +1,8 @@
 # Comunicación de Datos 2025 · TP Integrador · Comisión S33
 
-Aplicación cliente-servidor (React + FastAPI) que implementa dos propuestas del TP:
+Aplicación cliente-servidor (React + FastAPI) que implementa la siguiente propuesta del TP:
 
 1. **Digitalización de imágenes**: muestreo (resolución) y cuantización de color (bits por canal), con comparación visual y compresión del resultado.
-2. **Codificación de datos**: compresión de texto con los algoritmos **Huffman** y **Shannon-Fano**, mostrando árbol de códigos, tabla de símbolos y comparación de eficiencia.
 
 ## Integrantes
 
@@ -19,7 +18,7 @@ frontend (React + Vite)  <-- HTTP/JSON -->  backend (FastAPI / Python)
 ```
 
 - **frontend/**: SPA en React. Consume la API vía `fetch`.
-- **backend/**: API REST en FastAPI con endpoints `/imagen/procesar` y `/codificar/*`.
+- **backend/**: API REST en FastAPI con endpoint `/imagen/procesar`.
 
 ## Requisitos previos
 
@@ -58,9 +57,6 @@ La aplicación queda disponible en `http://localhost:5173`. Por defecto se conec
 | Método | Endpoint                 | Descripción                                              |
 |--------|---------------------------|-----------------------------------------------------------|
 | POST   | `/imagen/procesar`        | Recibe una imagen (multipart) + resolución + bits/canal y devuelve original y digitalizada en base64, junto con tamaños de archivo. |
-| POST   | `/codificar/huffman`      | Codifica un texto con Huffman: árbol, tabla de códigos, métricas. |
-| POST   | `/codificar/shannon-fano` | Codifica un texto con Shannon-Fano: árbol, tabla de códigos, métricas. |
-| POST   | `/codificar/decodificar`  | Decodifica una cadena binaria dada una tabla de códigos.  |
 
 ## Estructura del proyecto
 
@@ -70,12 +66,8 @@ backend/
     main.py                 # App FastAPI, CORS, routers
     routers/
       imagen.py              # Endpoint /imagen/procesar
-      codificar.py            # Endpoints /codificar/*
     services/
       imagen_service.py       # Muestreo, cuantización, compresión (Pillow)
-      huffman.py               # Construcción de árbol y códigos de Huffman
-      shannon_fano.py          # Construcción de árbol y códigos de Shannon-Fano
-      arbol.py                 # Nodo de árbol binario compartido
     models/
       schemas.py               # Modelos Pydantic (request/response)
   requirements.txt
@@ -87,17 +79,10 @@ frontend/
     App.jsx / App.css
     api/client.js              # Llamadas fetch a la API
     components/
-      Tabs.jsx / Tabs.css
       ImagenDigitalizador/
         ImagenDigitalizador.jsx / .css
         Controles.jsx
         ComparadorImagenes.jsx
-      Codificador/
-        Codificador.jsx / .css
-        TablaCodigos.jsx
-        ArbolCodigos.jsx
-        GraficoFrecuencias.jsx
-        ComparacionMetodos.jsx
     styles/
       index.css                # Estilos globales / variables
       shared.css                # Componentes reutilizables (botones, chips, panel)
@@ -108,7 +93,3 @@ frontend/
 - El muestreo reduce la imagen a una grilla de NxN (manteniendo relación de aspecto) usando interpolación NEAREST, lo que produce el efecto de "pixelado" visible al comparar con el original.
 - La cuantización de bits por canal soporta 1 bit (blanco y negro), 8 bits (paleta adaptativa de 256 colores) y 24 bits (color verdadero, sin reducción).
 - La compresión del resultado, cuando está activada, exporta la imagen como JPEG con calidad reducida; si no, como PNG.
-- Huffman se construye con un heap (`heapq`) tomando los dos nodos de menor frecuencia en cada paso.
-- Shannon-Fano se construye recursivamente, dividiendo la lista de símbolos (ordenada por frecuencia) en el punto que minimiza la diferencia de frecuencias entre ambos grupos.
-- Ambos algoritmos devuelven un árbol en formato JSON recursivo, que el frontend dibuja con SVG (sin librerías externas), y una tabla de símbolos con frecuencia, código y longitud.
-- Las métricas comparadas son: tasa de compresión, longitud promedio de código y entropía de la fuente.

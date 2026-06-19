@@ -1,0 +1,23 @@
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+.app__header {
+  margin-bottom: 20px;
+}
+
+.app__header h1 {
+  font-size: 22px;
+}
+
+.app__header p {
+  margin: 4px 0 0;
+  color: var(--color-texto-suave);
+  font-size: 13px;
+}
+
+.app__main {
+  margin-top: 20px;
+}

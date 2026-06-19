@@ -47,6 +47,15 @@ export default function ComparadorImagenes({ previewOriginal, resultado, tamanoO
           Tamaño: {resultado ? formatearBytes(resultado.tamano_digitalizado_bytes) : '—'}
           {reduccion !== null && <span className="comparador__reduccion"> ({reduccion}% menos)</span>}
         </p>
+        {resultado && (
+          <a
+            className="boton boton--secundario"
+            href={resultado.imagen_digitalizada_base64}
+            download={`imagen_digitalizada.${resultado.comprimido ? 'jpg' : 'png'}`}
+          >
+            Descargar imagen
+          </a>
+        )}
       </div>
     </div>
   )

@@ -23,7 +23,7 @@ frontend (React + Vite)  <-- HTTP/JSON -->  backend (FastAPI / Python)
 ## Demo en vivo
 
 - Frontend: `[COMPLETAR CON LA URL DE VERCEL]`
-- Backend (Swagger): `[COMPLETAR CON LA URL DE RENDER]/docs`
+- Backend (Swagger): https://comudatos-backend.onrender.com/docs
 
 ## Deploy (instrumento de ejecución sin instalación)
 

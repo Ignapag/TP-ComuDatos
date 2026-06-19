@@ -101,3 +101,9 @@
   color: var(--color-exito);
   font-weight: 600;
 }
+
+.comparador__panel a.boton {
+  margin-top: 10px;
+  text-decoration: none;
+  width: 100%;
+}

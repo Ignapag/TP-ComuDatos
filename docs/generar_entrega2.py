@@ -246,7 +246,7 @@ def main():
         caja(
             Paragraph(
                 "Frontend: <b>[COMPLETAR CON LA URL DE VERCEL]</b><br/>"
-                "Backend (Swagger): <b>[COMPLETAR CON LA URL DE RENDER]/docs</b>",
+                "Backend (Swagger): <b>https://comudatos-backend.onrender.com/docs</b>",
                 estilos["codigo"],
             )
         )

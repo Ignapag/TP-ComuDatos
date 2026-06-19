@@ -6,10 +6,10 @@ Aplicación cliente-servidor (React + FastAPI) que implementa la siguiente propu
 
 ## Integrantes
 
-- Santoro, José Joaquín — Legajo 33647
-- Aramburu, Tomás — Legajo 34650
-- Pagotto, Ignacio — Legajo 33605
-- Leguizamón, Nicolás — Legajo 33592
+- Santoro, José Joaquín 
+- Aramburu, Tomás 
+- Pagotto, Ignacio
+- Leguizamón, Nicolás 
 
 ## Arquitectura
 

@@ -235,10 +235,37 @@ def main():
     )
 
     flujo.append(encabezado_seccion("04", "Instrumento de ejecución"))
+    flujo.append(Paragraph("Opción 1 — Demo en vivo (sin instalación)", estilos["subseccion"]))
     flujo.append(
         Paragraph(
-            "Para que la cátedra pueda testear el desarrollo de forma local, el repositorio incluye un "
-            "<b>README.md</b> con las instrucciones detalladas. En resumen:",
+            "Aplicación desplegada para que la cátedra pueda probarla abriendo un link, sin instalar nada:",
+            estilos["cuerpo"],
+        )
+    )
+    flujo.append(
+        caja(
+            Paragraph(
+                "Frontend: <b>[COMPLETAR CON LA URL DE VERCEL]</b><br/>"
+                "Backend (Swagger): <b>[COMPLETAR CON LA URL DE RENDER]/docs</b>",
+                estilos["codigo"],
+            )
+        )
+    )
+    flujo.append(Spacer(1, 4))
+    flujo.append(
+        Paragraph(
+            "Nota: el backend está alojado en el plan free de Render; si lleva varios minutos sin uso "
+            "puede demorar entre 30 y 50 segundos en responder la primera petición mientras el servicio "
+            "se reactiva.",
+            estilos["cuerpo"],
+        )
+    )
+    flujo.append(Spacer(1, 8))
+    flujo.append(Paragraph("Opción 2 — Ejecución local", estilos["subseccion"]))
+    flujo.append(
+        Paragraph(
+            "Como respaldo, el repositorio incluye un <b>README.md</b> con las instrucciones detalladas "
+            "para correr el proyecto de forma local. En resumen:",
             estilos["cuerpo"],
         )
     )
